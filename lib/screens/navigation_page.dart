@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_dorm_life/items/add_floating_action_menu.dart';
 import 'package:my_dorm_life/screens/test_screen.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -66,10 +67,7 @@ class _NavigationPageState extends State<NavigationPage> {
         child: currentScreen,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
-        child: const Icon(Icons.add_rounded),
-      ),
+      floatingActionButton: AddFloatingMenu(),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 10,
