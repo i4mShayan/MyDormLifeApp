@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_dorm_life/items/add_floating_action_menu.dart';
+import 'package:my_dorm_life/screens/spends_page.dart';
 import 'package:my_dorm_life/screens/test_screen.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -18,7 +20,7 @@ class _NavigationPageState extends State<NavigationPage> {
 
   final PageStorageBucket bucket=PageStorageBucket();
   Widget currentScreen=const TestScreen();
-
+  AddFloatingMenu addFloatingMenu=AddFloatingMenu();
 
   final List<Map<String, dynamic>> _leftButtons=[
     {
@@ -34,7 +36,7 @@ class _NavigationPageState extends State<NavigationPage> {
       'icon' : Icons.attach_money_sharp,
       'icon_size' : 30.0,
       'text' : 'Spends',
-      'screen' : TestScreen(),
+      'screen' : SpendsPage(),
       'tab' : 1,
     },
   ];
@@ -61,7 +63,17 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).appBarTheme.backgroundColor,
+    ));
     return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.bed_rounded, size: 30,),
+        titleSpacing: 0,
+        title: Text('My Dorm Life'),
+        elevation: 0,
+        // toolbarHeight: 50,
+      ),
       body: PageStorage(
         bucket: bucket,
         child: currentScreen,
