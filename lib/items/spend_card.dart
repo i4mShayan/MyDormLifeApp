@@ -33,7 +33,7 @@ class _SpendCardState extends State<SpendCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 5, right: 5, top: 5),
       child: InkWell(
         onTap: (){},
         child: Card(
