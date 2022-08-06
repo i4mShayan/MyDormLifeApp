@@ -15,36 +15,24 @@ class _NavigationPageState extends State<NavigationPage> {
 
   final List<Map<String, dynamic>> _buttons=[
     {
-      'minWidth' : 30.0,
       'icon' : Icons.home_filled,
-      'icon_size' : 30.0,
       'text' : 'Home',
       'screen' : TestScreen(),
-      'tab' : 0,
     },
     {
-      'minWidth' : 30.0,
       'icon' : Icons.attach_money_sharp,
-      'icon_size' : 30.0,
       'text' : 'Spends',
       'screen' : SpendsPage(),
-      'tab' : 1,
     },
     {
-      'minWidth' : 30.0,
       'icon' : Icons.today_sharp,
-      'icon_size' : 30.0,
       'text' : 'Plans',
       'screen' : TestScreen(),
-      'tab' : 2,
     },
     {
-      'minWidth' : 30.0,
       'icon' : Icons.settings_sharp,
-      'icon_size' : 30.0,
       'text' : 'Settings',
       'screen' : TestScreen(),
-      'tab' : 3,
     },
   ];
 
@@ -83,27 +71,24 @@ class _NavigationPageState extends State<NavigationPage> {
             ];
           },
           body: TabBarView(
-            children: [
-              Text("test 1"),
-              SpendsPage(),
-              Text("test 3"),
-              Text("test 4"),
-            ],
+            children: _buttons.map(
+                    (button) => button['screen'] as Widget
+            ).toList(),
           ),
         ),
         floatingActionButton: ExpandableFab(
           distance: 60.0,
           type: ExpandableFabType.fan,
           fanAngle: 120,
-          child: const Icon(Icons.add_rounded),
+          child: const Icon(Icons.add),
           closeButtonStyle: const ExpandableFabCloseButtonStyle(
-            child: Icon(Icons.close_rounded),
+            child: Icon(Icons.close),
             foregroundColor: Colors.grey,
             backgroundColor: Colors.white,
           ),
           overlayStyle: ExpandableFabOverlayStyle(
-            color: Colors.black.withOpacity(0.5),
-            // blur: 5,
+            color: Colors.black.withOpacity(0.8),
+            // blur: 2,
           ),
           children: [
             FloatingActionButton(
