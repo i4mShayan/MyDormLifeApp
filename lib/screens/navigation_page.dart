@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_dorm_life/items/add_floating_action_menu.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:my_dorm_life/screens/spends_page.dart';
 import 'package:my_dorm_life/screens/test_screen.dart';
 
@@ -13,16 +13,7 @@ class NavigationPage extends StatefulWidget {
 
 class _NavigationPageState extends State<NavigationPage> {
 
-  int currentTab=0;
-  final List<Widget> screens=[
-    const TestScreen(),
-  ];
-
-  final PageStorageBucket bucket=PageStorageBucket();
-  Widget currentScreen=const TestScreen();
-  AddFloatingMenu addFloatingMenu=AddFloatingMenu();
-
-  final List<Map<String, dynamic>> _leftButtons=[
+  final List<Map<String, dynamic>> _buttons=[
     {
       'minWidth' : 30.0,
       'icon' : Icons.home_filled,
@@ -39,9 +30,6 @@ class _NavigationPageState extends State<NavigationPage> {
       'screen' : SpendsPage(),
       'tab' : 1,
     },
-  ];
-
-  final List<Map<String, dynamic>> _rightButtons=[
     {
       'minWidth' : 30.0,
       'icon' : Icons.today_sharp,
@@ -60,96 +48,80 @@ class _NavigationPageState extends State<NavigationPage> {
     },
   ];
 
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Theme.of(context).appBarTheme.backgroundColor,
     ));
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.bed_rounded, size: 30,),
-        titleSpacing: 0,
-        title: Text('My Dorm Life'),
-        elevation: 0,
-        // toolbarHeight: 50,
-      ),
-      body: PageStorage(
-        bucket: bucket,
-        child: currentScreen,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: AddFloatingMenu(),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return DefaultTabController(
+      length: _buttons.length,
+      child: Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                title: Text('My Dorm Life'),
+                leading: Icon(Icons.bed_rounded, size: 30,),
+                titleSpacing: 0,
+                forceElevated: true,
+                // elevation: 2,
+                floating: true,
+                pinned: true,
+                snap: true,
+                bottom: TabBar(
+                  tabs: _buttons.map(
+                          (button) =>
+                          Tab(
+                            icon: Icon(
+                              button['icon'],
+                            ),
+                            text: innerBoxIsScrolled ? null:button['text'],
+                          )
+                  ).toList(),
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: _leftButtons.map((button) =>
-                    MaterialButton(
-                      minWidth: button['minWidth'],
-                      onPressed: (){
-                        setState((){
-                          currentScreen = button['screen'];
-                          currentTab = button['tab'];
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            button['icon'],
-                            size: button['icon_size'],
-                            color: currentTab==button['tab'] ? Colors.blue:Colors.grey,
-                          ),
-                          Text(
-                            button['text'],
-                            style: TextStyle(
-                              color: currentTab==button['tab'] ? Colors.blue:Colors.grey,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                ).toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: _rightButtons.map((button) =>
-                    MaterialButton(
-                      minWidth: button['minWidth'],
-                      onPressed: (){
-                        setState((){
-                          currentScreen = button['screen'];
-                          currentTab = button['tab'];
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            button['icon'],
-                            size: button['icon_size'],
-                            color: currentTab==button['tab'] ? Colors.blue:Colors.grey,
-                          ),
-                          Text(
-                            button['text'],
-                            style: TextStyle(
-                              color: currentTab==button['tab'] ? Colors.blue:Colors.grey,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                ).toList(),
-              ),
+              Text("test 1"),
+              SpendsPage(),
+              Text("test 3"),
+              Text("test 4"),
             ],
           ),
+        ),
+        floatingActionButton: ExpandableFab(
+          distance: 60.0,
+          type: ExpandableFabType.fan,
+          fanAngle: 120,
+          child: const Icon(Icons.add_rounded),
+          closeButtonStyle: const ExpandableFabCloseButtonStyle(
+            child: Icon(Icons.close_rounded),
+            foregroundColor: Colors.grey,
+            backgroundColor: Colors.white,
+          ),
+          overlayStyle: ExpandableFabOverlayStyle(
+            color: Colors.black.withOpacity(0.5),
+            // blur: 5,
+          ),
+          children: [
+            FloatingActionButton(
+              elevation: 0,
+              onPressed: () {  },
+              child: const Icon(Icons.add_task_rounded),
+            ),
+            FloatingActionButton(
+              elevation: 0,
+              onPressed: () {  },
+              child: const Icon(Icons.person_add_alt_1_rounded),
+            ),
+            FloatingActionButton(
+              elevation: 0,
+              onPressed: () {  },
+              child: const Icon(Icons.add_card_rounded),
+            ),
+          ],
         ),
       ),
     );
