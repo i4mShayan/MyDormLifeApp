@@ -34,7 +34,7 @@ class _SpendsPageState extends State<SpendsPage> {
         ) : SizedBox(),
         Scaffold(
           // backgroundColor: Colors.blue[300],
-          backgroundColor: provider.isScaffoldBackgroundPhoto ? Colors.transparent:Colors.lightBlue[300],
+          backgroundColor: provider.isScaffoldBackgroundPhoto ? Colors.transparent:provider.isDarkMode ? Colors.black:Colors.lightBlue[300],
           body: ListView(
             children: [
               Padding(
