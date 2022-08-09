@@ -1,8 +1,16 @@
+import 'dart:math';
+
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import 'package:my_dorm_life/items/add_FAB_menu.dart';
+import 'package:my_dorm_life/screens/settings_page.dart';
 import 'package:my_dorm_life/screens/spends_page.dart';
 import 'package:my_dorm_life/screens/test_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({Key? key}) : super(key: key);
@@ -32,12 +40,13 @@ class _NavigationPageState extends State<NavigationPage> {
     {
       'icon' : Icons.settings_sharp,
       'text' : 'Settings',
-      'screen' : TestScreen(),
+      'screen' : SettingsPage(),
     },
   ];
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AppThemeProvider>(context);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Theme.of(context).appBarTheme.backgroundColor,
     ));
@@ -48,15 +57,33 @@ class _NavigationPageState extends State<NavigationPage> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                title: Text('My Dorm Life'),
+                title: Text('My Dorm Life',),
                 leading: Icon(Icons.bed_rounded, size: 30,),
+                actions: [
+                  ThemeSwitcher(
+                    clipper: const ThemeSwitcherCircleClipper(),
+                    builder: (context) => IconButton(
+                        onPressed: (){
+                            provider.toggleTheme(!provider.isDarkMode);
+                        },
+                        icon: AnimatedSwitcher(
+                          duration: Duration(milliseconds: 1000),
+                          child: provider.isDarkMode ? Transform.rotate(angle: 3*pi/2 ,child: Icon(Icons.dark_mode_rounded,)) : Icon(Icons.light_mode_rounded, color: Colors.white,),
+                          switchInCurve: Curves.bounceIn,
+                        ),
+                    ),
+                  ),
+                  SizedBox(width: 5,),
+                ],
                 titleSpacing: 0,
+                backgroundColor: provider.isDarkMode ? Colors.black:Colors.blue,
                 forceElevated: true,
                 // elevation: 2,
                 floating: true,
                 pinned: true,
                 snap: true,
                 bottom: TabBar(
+                  indicatorColor: Colors.white,
                   tabs: _buttons.map(
                           (button) =>
                           Tab(
@@ -76,38 +103,7 @@ class _NavigationPageState extends State<NavigationPage> {
             ).toList(),
           ),
         ),
-        floatingActionButton: ExpandableFab(
-          distance: 60.0,
-          type: ExpandableFabType.fan,
-          fanAngle: 120,
-          child: const Icon(Icons.add),
-          closeButtonStyle: const ExpandableFabCloseButtonStyle(
-            child: Icon(Icons.close),
-            foregroundColor: Colors.grey,
-            backgroundColor: Colors.white,
-          ),
-          overlayStyle: ExpandableFabOverlayStyle(
-            color: Colors.black.withOpacity(0.8),
-            // blur: 2,
-          ),
-          children: [
-            FloatingActionButton(
-              elevation: 0,
-              onPressed: () {  },
-              child: const Icon(Icons.add_task_rounded),
-            ),
-            FloatingActionButton(
-              elevation: 0,
-              onPressed: () {  },
-              child: const Icon(Icons.person_add_alt_1_rounded),
-            ),
-            FloatingActionButton(
-              elevation: 0,
-              onPressed: () {  },
-              child: const Icon(Icons.add_card_rounded),
-            ),
-          ],
-        ),
+        floatingActionButton: AddFABMenu(),
       ),
     );
   }
