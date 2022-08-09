@@ -6,7 +6,7 @@ import 'package:my_dorm_life/items/spends/person_spend_card.dart';
 import 'package:my_dorm_life/items/spends/detailed_spend_card.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:my_dorm_life/items/add_FAB_menu.dart';
+import 'package:my_dorm_life/items/FAB_add_menu.dart';
 
 import '../theme_provider.dart';
 

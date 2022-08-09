@@ -6,7 +6,7 @@ class Themes{
     backgroundColor: Colors.white,
     colorScheme: ColorScheme.light(),
     iconTheme: IconThemeData(color: Colors.black),
-    appBarTheme: AppBarTheme(color: Colors.blue,),
+    appBarTheme: AppBarTheme(foregroundColor: Colors.black),
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.black,
       textTheme: ButtonTextTheme.primary,
@@ -22,6 +22,10 @@ class Themes{
       foregroundColor: Colors.white,
     ),
     dividerColor: Colors.black,
+    checkboxTheme: CheckboxThemeData(
+      checkColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.white),
+      fillColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.black),
+    ),
   );
 
   static final darkTheme = ThemeData(
@@ -30,7 +34,7 @@ class Themes{
     backgroundColor: Colors.black,
     colorScheme: ColorScheme.dark(),
     iconTheme: IconThemeData(color: Colors.white),
-    appBarTheme: AppBarTheme(color: Colors.grey.shade900, elevation: 2),
+    appBarTheme: AppBarTheme(foregroundColor: Colors.white),
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.white,
       textTheme: ButtonTextTheme.primary,
@@ -50,6 +54,10 @@ class Themes{
     switchTheme: SwitchThemeData(
       thumbColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.blue),
       trackColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.blue.withOpacity(0.5)),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      checkColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.black),
+      fillColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.white),
     ),
   );
 }

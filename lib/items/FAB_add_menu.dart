@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import 'package:my_dorm_life/screens/add_dormmate_page.dart';
 import 'package:my_dorm_life/screens/add_spend_page.dart';
+import 'package:my_dorm_life/screens/add_task_page.dart';
 
 class AddFABMenu extends StatefulWidget {
   const AddFABMenu({Key? key}) : super(key: key);
@@ -33,12 +35,32 @@ class _AddFABMenuState extends State<AddFABMenu>{
       children: [
         FloatingActionButton(
           elevation: 0,
-          onPressed: () {  },
+          onPressed: () {
+            _key.currentState!.dispose();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddTaskPage()),
+            ).then((value){
+              setState((){
+                _key=GlobalKey<ExpandableFabState>();
+              });
+            });
+          },
           child: const Icon(Icons.add_task_rounded),
         ),
         FloatingActionButton(
           elevation: 0,
-          onPressed: () {  },
+          onPressed: () {
+            _key.currentState!.dispose();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddDormmatePage()),
+            ).then((value){
+              setState((){
+                _key=GlobalKey<ExpandableFabState>();
+              });
+            });
+          },
           child: const Icon(Icons.person_add_alt_1_rounded),
         ),
         FloatingActionButton(

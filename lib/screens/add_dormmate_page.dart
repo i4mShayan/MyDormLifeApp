@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../theme_provider.dart';
 
-class AddSpendPage extends StatelessWidget {
-  const AddSpendPage({Key? key}) : super(key: key);
+class AddDormmatePage extends StatelessWidget {
+  const AddDormmatePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class AddSpendPage extends StatelessWidget {
         ),
         elevation: 0,
         titleSpacing: 0,
-        title: Text("Add New Spend",),
+        title: Text("Add New Dormmate",),
       ),
       // body: ,
     );

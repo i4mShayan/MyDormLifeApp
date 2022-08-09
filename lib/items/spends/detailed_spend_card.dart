@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_dorm_life/confetti_done_effect.dart';
 
 class SpendCard extends StatefulWidget {
   String paidBy;
@@ -70,8 +71,6 @@ class _SpendCardState extends State<SpendCard> {
                       child: Row(
                         children: [
                           Checkbox(
-                            checkColor: Colors.white,
-                            activeColor: Colors.black87,
                             shape: CircleBorder(),
                             value: hasPaid[person],
                             onChanged: (bool? value) {

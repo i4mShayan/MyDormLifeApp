@@ -59,6 +59,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
             child: provider.isScaffoldBackgroundPhoto ? Icon(Icons.image_rounded, color: iconColor,) : Icon(Icons.image_not_supported_rounded, color: iconColor,),
             switchInCurve: Curves.bounceIn,
           ),
+          subtitle: provider.isScaffoldBackgroundPhoto ? Text("Some backgrounds may contain image"):Text("All backgrounds are solid colors"),
         ),
       ],
     );

@@ -4,7 +4,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
-import 'package:my_dorm_life/items/add_FAB_menu.dart';
+import 'package:my_dorm_life/items/FAB_add_menu.dart';
 import 'package:my_dorm_life/screens/settings_page.dart';
 import 'package:my_dorm_life/screens/spends_page.dart';
 import 'package:my_dorm_life/screens/test_screen.dart';
@@ -47,9 +47,6 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AppThemeProvider>(context);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Theme.of(context).appBarTheme.backgroundColor,
-    ));
     return DefaultTabController(
       length: _buttons.length,
       child: Scaffold(
@@ -57,6 +54,7 @@ class _NavigationPageState extends State<NavigationPage> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
+                foregroundColor: Colors.white,
                 title: Text('My Dorm Life',),
                 leading: Icon(Icons.bed_rounded, size: 30,),
                 actions: [
@@ -69,13 +67,16 @@ class _NavigationPageState extends State<NavigationPage> {
                         icon: AnimatedSwitcher(
                           duration: Duration(milliseconds: 1000),
                           child: provider.isDarkMode ? Transform.rotate(angle: 3*pi/2 ,child: Icon(Icons.dark_mode_rounded,)) : Icon(Icons.light_mode_rounded, color: Colors.white,),
-                          switchInCurve: Curves.bounceIn,
                         ),
                     ),
                   ),
                   SizedBox(width: 5,),
                 ],
                 titleSpacing: 0,
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarColor: provider.isDarkMode ? Colors.black:Colors.blue,
+                  statusBarIconBrightness: Brightness.light,
+                ),
                 backgroundColor: provider.isDarkMode ? Colors.black:Colors.blue,
                 forceElevated: true,
                 // elevation: 2,
