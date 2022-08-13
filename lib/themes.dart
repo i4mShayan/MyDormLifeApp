@@ -46,15 +46,15 @@ class Themes{
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[100],
       foregroundColor: Colors.black,
     ),
     cardColor: Colors.grey[900],
     dividerColor: Colors.white,
-    switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.blue),
-      trackColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.blue.withOpacity(0.5)),
-    ),
+    // switchTheme: SwitchThemeData(
+    //   thumbColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.blue),
+    //   trackColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.blue.withOpacity(0.5)),
+    // ),
     checkboxTheme: CheckboxThemeData(
       checkColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.black),
       fillColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.white),

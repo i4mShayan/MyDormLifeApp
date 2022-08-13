@@ -29,8 +29,8 @@ class _AddFABMenuState extends State<AddFABMenu>{
         backgroundColor: Colors.white,
       ),
       overlayStyle: ExpandableFabOverlayStyle(
-        color: Colors.black.withOpacity(0.8),
-        // blur: 2,
+        // color: Colors.black.withOpacity(0.8),
+        blur: 3,
       ),
       children: [
         FloatingActionButton(

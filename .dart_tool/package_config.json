@@ -140,6 +140,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "rainbow_color",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/rainbow_color-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "rainbow_vis",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/rainbow_vis-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -200,7 +212,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-08-09T16:35:48.744147Z",
+  "generated": "2022-08-13T10:15:27.150011Z",
   "generator": "pub",
   "generatorVersion": "2.17.1"
 }

@@ -92,7 +92,7 @@ class _NavigationPageState extends State<NavigationPage> {
                               button['icon'],
                             ),
                             text: innerBoxIsScrolled ? null:button['text'],
-                          )
+                          ),
                   ).toList(),
                 ),
               ),

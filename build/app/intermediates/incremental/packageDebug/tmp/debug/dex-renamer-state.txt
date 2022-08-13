@@ -1,4 +1,4 @@
-#Tue Aug 09 19:25:21 IRDT 2022
+#Sat Aug 13 16:58:18 IRDT 2022
 base.0=C\:\\Users\\Shayan\\AndroidStudioProjects\\my_dorm_life\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
