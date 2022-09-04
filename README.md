@@ -1,16 +1,5 @@
-# my_dorm_life
+# MyDormLife
+Casual and Fun project (yet)
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### A Sample Of Design and Effects
+https://user-images.githubusercontent.com/29325256/188298589-785b42ef-c713-42c3-86ab-ce2ec4dc3737.mp4
